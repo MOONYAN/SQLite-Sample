@@ -1,0 +1,1 @@
+D:\SQLite Sample\SQLite Sample\SQLite Sample.csproj;x64

@@ -8,31 +8,22 @@ using SQLiteNetExtensions.Attributes;
 
 namespace SQLite_Sample
 {
-    public class Person
+    public class Group
     {
-
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         [MaxLength(64)]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Person> Persons { get; set; }
 
-        public DateTime DayOfBirth { get; set; }
-
-        public byte[] Picture { get; set; }
-
-        [ForeignKey(typeof(Group))]
-        public int GroupId { get; set; }
-
-        [ManyToOne(inverseProperty: "Group",CascadeOperations = CascadeOperation.All)]
-        public Group Group { get; set; }
-
-        public void Show()
+        public void show()
         {
             System.Diagnostics.Debug.WriteLine(Id);
             System.Diagnostics.Debug.WriteLine(Name);
+            Persons.ForEach(p=>p.Show());
         }
     }
 }

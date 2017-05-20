@@ -3,3 +3,5 @@ SQLite Sample/bin/
 SQLite Sample/project.lock.json
 SampleLibrary/obj/
 SampleLibrary/bin/
+Library/obj/
+Library/bin/

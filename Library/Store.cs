@@ -33,6 +33,16 @@ namespace Library
             }
         }
 
+        public void DropTable()
+        {
+            using (var db = DbConnection)
+            {
+                db.DropTable<Tag>();
+                db.DropTable<Manga>();
+                db.DropTable<MangaTag>();
+            }
+        }
+
         public Manga AddManga(Manga manga)
         {
             using (var db = DbConnection)

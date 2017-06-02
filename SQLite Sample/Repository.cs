@@ -89,6 +89,6 @@ namespace SQLite_Sample
                 Group group = db.GetWithChildren<Group>(1);
                 group.show();
             }
-        }
+        }        
     }
 }

@@ -80,5 +80,25 @@ namespace Library
             }
             return tag;
         }
+
+        public Manga FindMangaById(int id)
+        {
+            Manga manga;
+            using (var db = DbConnection)
+            {
+                manga = db.FindWithChildren<Manga>(id, recursive:true);
+            }
+            return manga;
+        }
+
+        public Tag FindTagById(int id)
+        {
+            Tag tag;
+            using (var db = DbConnection)
+            {
+                tag = db.FindWithChildren<Tag>(id, recursive: true);
+            }
+            return tag;
+        }
     }
 }

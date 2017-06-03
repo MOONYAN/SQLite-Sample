@@ -11,7 +11,9 @@ namespace Library.Entity
 
         public string Name { get; set; }
 
-        [ManyToMany(typeof(Manga), CascadeOperations = CascadeOperation.All)]
-        public List<Manga> Mangas { get; set; }
+        [ManyToMany(typeof(MangaTag), CascadeOperations = CascadeOperation.All)]
+        public List<Manga> Mangas { get { return _mangas; } set { _mangas = value; } }
+
+        private List<Manga> _mangas = new List<Manga>();
     }
 }

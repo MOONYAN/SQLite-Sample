@@ -19,7 +19,9 @@ namespace Library.Entity
 
         public DateTime LastEditTime { get; set; }
 
-        [ManyToMany(typeof(Tag), CascadeOperations = CascadeOperation.All)]
-        public List<Tag> Tags { get; set; }
+        [ManyToMany(typeof(MangaTag), CascadeOperations = CascadeOperation.All)]
+        public List<Tag> Tags { get { return _tags; } set { _tags = value; } }
+        
+        private List<Tag> _tags = new List<Tag>();
     }
 }

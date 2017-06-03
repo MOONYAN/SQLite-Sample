@@ -33,7 +33,7 @@ namespace SQLite_Sample
             {
                 db.CreateTable<Person>();
                 db.CreateTable<Group>();
-                db.GetMapping(typeof(Person));
+                //db.GetMapping(typeof(Person));
             }
         }
 

@@ -107,6 +107,29 @@ namespace UnitTestProject
         }
 
         [TestMethod]
+        public void TestFindTagById()
+        {
+            Tag tag = new Tag()
+            {
+                Name = "Well"
+            };
+            #region add new tag
+            Assert.AreEqual(0, tag.Id);
+            Assert.AreSame(tag, _store.AddTag(tag));
+            Assert.IsTrue(tag.Id > 0);
+            Assert.IsTrue(tag.Mangas.Count == 0);
+            #endregion
+
+            #region find by id
+            Tag goal = _store.FindTagById(tag.Id);
+            Assert.AreEqual(1, goal.Id);
+            Assert.AreNotSame(tag, goal);
+            Assert.IsTrue(goal.Mangas.Count == 0);
+            Assert.IsTrue(tag.Mangas.Count == 0);
+            #endregion
+        }
+
+        [TestMethod]
         public void TestUpdateTag()
         {
             Manga manga = new Manga()

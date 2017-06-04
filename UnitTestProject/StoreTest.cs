@@ -75,8 +75,8 @@ namespace UnitTestProject
         {
             PopulateData();
             List<Manga> mangas = _store.FindMangaByName("manga1");
-            Assert.AreEqual(1,mangas.Count);
-            Assert.AreEqual(2,_store.FindMangaById(1).Tags.Count);
+            Assert.AreEqual(1, mangas.Count);
+            Assert.AreEqual(2, _store.FindMangaById(1).Tags.Count);
             Assert.AreEqual(2, mangas[0].Tags.Count);
         }
 
@@ -179,13 +179,21 @@ namespace UnitTestProject
         [TestMethod]
         public void TestGetAllManga()
         {
-            Assert.Fail();
+            PopulateData();
+            List<Manga> mangas = _store.GetAllManga();
+            Assert.AreEqual(2, mangas.Count);
+            Assert.AreEqual(2, mangas[0].Tags.Count);
+            Assert.AreEqual(2, mangas[1].Tags.Count);
         }
 
         [TestMethod]
         public void TestGetAllTag()
         {
-            Assert.Fail();
+            PopulateData();
+            List<Tag> tags = _store.GetAllTag();
+            Assert.AreEqual(2, tags.Count);
+            Assert.AreEqual(2, tags[0].Mangas.Count);
+            Assert.AreEqual(2, tags[1].Mangas.Count);
         }
 
         private void PopulateData()

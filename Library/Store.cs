@@ -112,6 +112,14 @@ namespace Library
             return mangas;
         }
 
+        public void DeleteTag(Tag tag)
+        {
+            using (var db = DbConnection)
+            {
+                db.Delete<Tag>(tag.Id);
+            }
+        }
+
         public List<Manga> GetAllManga()
         {
             List<Manga> mangas;

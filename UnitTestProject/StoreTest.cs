@@ -138,6 +138,18 @@ namespace UnitTestProject
         }
 
         [TestMethod]
+        public void TestDeleteTag()
+        {
+            PopulateData();
+            Assert.AreEqual(2, _store.GetAllTag().Count);
+            Assert.AreEqual(2, _store.FindMangaById(1).Tags.Count);
+            Tag tag = _store.FindTagById(1);
+            _store.DeleteTag(tag);
+            Assert.AreEqual(1,_store.GetAllTag().Count);
+            Assert.AreEqual(1, _store.FindMangaById(1).Tags.Count);
+        }
+
+        [TestMethod]
         public void TestFindTagById()
         {
             Tag tag = new Tag()

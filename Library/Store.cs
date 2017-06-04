@@ -100,5 +100,25 @@ namespace Library
             }
             return tag;
         }
+
+        public List<Manga> GetAllManga()
+        {
+            List<Manga> mangas;
+            using (var db = DbConnection)
+            {
+                mangas = db.GetAllWithChildren<Manga>(recursive: true);
+            }
+            return mangas;
+        }
+
+        public List<Tag> GetAllTag()
+        {
+            List<Tag> tags;
+            using (var db = DbConnection)
+            {
+                tags = db.GetAllWithChildren<Tag>(recursive: true);
+            }
+            return tags;
+        }
     }
 }

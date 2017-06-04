@@ -165,6 +165,43 @@ namespace UnitTestProject
             #endregion
         }
 
+        [TestMethod]
+        public void TestGetAllManga()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void TestGetAllTag()
+        {
+            Assert.Fail();
+        }
+
+        private void PrepareForGetAll()
+        {
+            #region prepare entity
+            Manga manga1 = new Manga() { Name = "manga1" };
+            Manga manga2 = new Manga() { Name = "manga2" };
+            Tag tag1 = new Tag() { Name = "tag1" };
+            Tag tag2 = new Tag() { Name = "tag2" };
+            #endregion
+
+            #region insert entity
+            _store.AddManga(manga1);
+            _store.AddManga(manga2);
+            _store.AddTag(tag1);
+            _store.AddTag(tag2);
+            #endregion
+
+            #region attach
+            manga1.Tags.Add(tag1);
+            manga1.Tags.Add(tag2);
+            manga2.Tags.Add(tag1);
+            manga2.Tags.Add(tag2);
+            _store.UpdateManga(manga1);
+            #region
+        }
+
         [TestCleanup]
         public void CleanUp()
         {

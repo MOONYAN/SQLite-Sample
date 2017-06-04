@@ -199,6 +199,7 @@ namespace UnitTestProject
             manga2.Tags.Add(tag1);
             manga2.Tags.Add(tag2);
             _store.UpdateManga(manga1);
+            _store.UpdateManga(manga2);
             #endregion
         }
 

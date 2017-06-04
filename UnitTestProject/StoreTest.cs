@@ -106,7 +106,7 @@ namespace UnitTestProject
             Assert.IsTrue(tag.Mangas.Count == 0);
             #endregion
 
-            #region update
+            #region attach tag
             manga.Author = "Trump";
             manga.Name = "TrumpAdvanture";
             manga.Tags.Add(tag);
@@ -114,6 +114,26 @@ namespace UnitTestProject
             Assert.IsTrue(_store.FindTagById(1).Mangas.Count == 1);
             Assert.IsTrue(manga.Tags.Count == 1);
             Assert.IsFalse(tag.Mangas.Count == 1);
+            #endregion
+        }
+
+        [TestMethod]
+        public void TestUpdateManga2()
+        {
+            PopulateData();
+            #region get 1 manga
+            Manga manga = _store.FindMangaById(1);
+            Assert.AreEqual(2, manga.Tags.Count);
+            Assert.AreEqual(2, _store.GetAllTag().Count);
+            #endregion
+
+            #region detach tag
+            manga.Tags.RemoveAll(tag => tag.Id == 1);
+            manga = _store.UpdateManga(manga);
+            Assert.AreEqual(1, manga.Tags.Count);
+            Assert.AreEqual(1, _store.FindMangaById(manga.Id).Tags.Count);
+            Assert.AreEqual(2, _store.GetAllTag().Count);
+            Assert.AreEqual(1, _store.FindTagById(1).Mangas.Count);
             #endregion
         }
 
@@ -166,7 +186,7 @@ namespace UnitTestProject
             Assert.IsTrue(tag.Mangas.Count == 0);
             #endregion
 
-            #region update
+            #region attach manga
             tag.Name = "Good";
             tag.Mangas.Add(manga);
             Assert.AreSame(tag, _store.UpdateTag(tag));

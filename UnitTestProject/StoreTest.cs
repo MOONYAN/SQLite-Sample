@@ -177,7 +177,7 @@ namespace UnitTestProject
             Assert.Fail();
         }
 
-        private void PrepareForGetAll()
+        private void PopulateData()
         {
             #region prepare entity
             Manga manga1 = new Manga() { Name = "manga1" };

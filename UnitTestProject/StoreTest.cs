@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Library;
 using Library.Entity;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
@@ -67,6 +68,16 @@ namespace UnitTestProject
             Assert.IsTrue(goal.Tags.Count == 0);
             Assert.IsTrue(manga.Tags.Count == 0);
             #endregion
+        }
+
+        [TestMethod]
+        public void TestFindMangaByName()
+        {
+            PopulateData();
+            List<Manga> mangas = _store.FindMangaByName("manga1");
+            Assert.AreEqual(1,mangas.Count);
+            Assert.AreEqual(2,_store.FindMangaById(1).Tags.Count);
+            Assert.AreEqual(2, mangas[0].Tags.Count);
         }
 
         [TestMethod]

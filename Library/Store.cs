@@ -101,6 +101,17 @@ namespace Library
             return tag;
         }
 
+        public List<Manga> FindMangaByName(string name)
+        {
+            List<Manga> mangas;
+            using (var db = DbConnection)
+            {
+                //mangas = db.Table<Manga>().Where(manga => manga.Name == name).ToList<Manga>();
+                mangas = db.GetAllWithChildren<Manga>(recursive: true).Where(manga => manga.Name == name).ToList<Manga>();
+            }
+            return mangas;
+        }
+
         public List<Manga> GetAllManga()
         {
             List<Manga> mangas;
